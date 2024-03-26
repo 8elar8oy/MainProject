@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column ;
+    width: 865px;
+    height: 400px;
+
+    background-color: #8bffb0;
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.title{
+    color: black;
+    text-align: center;
+    font-family:fantasy, Impact;
+    font-size: 30px;
+
+
+}

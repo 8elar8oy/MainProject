@@ -1,0 +1,14 @@
+.container {
+
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px grey solid;
+    gap: 10px;
+    background-color: #e9e9e9;
+}
