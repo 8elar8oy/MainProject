@@ -6,6 +6,7 @@
       "surname": "Khoruzhenko",
       "username": "8elar8oy",
       "email": "makshor123@gmail.com",
+      "password": "123456",
       "phone": "1-770-736-8031",
       "image": [
         "./images/ava.jpg",
@@ -18,6 +19,7 @@
       "surname": "Artemenko",
       "username": "Art1983",
       "email": "art2@gmail.com",
+      "password": "123456",
       "phone": "1-770-736-8031",
       "image": [
         "./images/ava.jpg",
