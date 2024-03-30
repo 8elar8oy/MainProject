@@ -1,6 +1,7 @@
 
 import {profilePage} from "../pages/profilePage";
 import {registrationPage} from "../pages/registrationPage";
+import {userData} from "../feautures/loginForm/loginForm";
 
 export const getLayout = () => {
     const div = document.querySelector('#app')
@@ -10,7 +11,9 @@ export const getLayout = () => {
     }
 
     if (window.location.pathname === '/profile') {
-        div.append(profilePage())
+        console.log(userData)
+
+        //div.append(profilePage(userData.id))
     }
 
     return div
