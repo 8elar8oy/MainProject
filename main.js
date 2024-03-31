@@ -4,8 +4,7 @@ import{getLayout} from "./layout/layout";
 
 const app = document.querySelector('#app')
 
-app.append(getLayout())
-
+app.append(getLayout(null,'/'))
 
 
 

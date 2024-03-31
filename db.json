@@ -9,8 +9,8 @@
       "password": "123456",
       "phone": "1-770-736-8031",
       "image": [
-        "./images/ava.jpg",
-        "./images/hat.jpg"
+        "./public/ava.jpg",
+        "./public/profileHat.png"
       ]
     },
     {
@@ -22,8 +22,8 @@
       "password": "123456",
       "phone": "1-770-736-8031",
       "image": [
-        "./images/ava.jpg",
-        "./images/hat.jpg"
+        "./public/ava.jpg",
+        "./public/profileHat.png"
       ]
     }
   ],

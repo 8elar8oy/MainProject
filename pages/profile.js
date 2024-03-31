@@ -19,7 +19,7 @@ export const profile = (user) =>{
     const profileInfo = document.createElement('div')
     profileInfo.classList.add(styles.profileInfo)
 
-    const profileHat = image(user.image[0])
+    const profileHat = image(user.image[1])
     const profileAva = image(user.image[0])
     const name = document.createElement('p');
     name.innerText = user.name;

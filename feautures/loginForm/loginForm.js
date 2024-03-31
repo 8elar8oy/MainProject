@@ -2,17 +2,20 @@ import {getInput} from "../../components/input";
 import {button} from "../../components/button";
 import {getUsers} from "../../api/getUsers";
 import styles from "./loginForm.module.css"
+import { getLayout } from "../../layout/layout";
 
 
-export const userData = {
+export let userData = {
     id: '',
     getId(id) {
         this.id = id
     }
 };
-const changePage =()=>{
+const changePage =(userId)=>{
     console.log('Button clicked',userData);
-    window.location.pathname = '/profile'
+    localStorage.setItem('userId', userId);
+    window.history.pushState({ path: '/profile' }, '', '/profile');
+    getLayout();
 }
 
 const checkUser = (data,loginData) =>{
@@ -39,22 +42,16 @@ const getUserData = () => {
                 userData.getId(info.id)
                 console.log(userData.id)
                 alert('Авторизация успешна')
-                changePage()
+                changePage(userData.id)
+                //cleanUserForm(getUserForm().id)
             }
             else{
-               // alert('неверный пароль')
+                alert('неверный пароль')
             }
         }
 
     )
-        //cleanUserForm(getUserForm().id)
-
-        //.then( data=> console.log(data))
-
-        /*changePage*/
-        // patchUsers('users',userData,userData.id ).then(data => console.log(data.data))
-
-
+        
         return
 
     if (!userData.name||!userData.email||!userData.username){
@@ -67,21 +64,8 @@ const getUserData = () => {
     //         cleanUserForm(getUserForm().id)
     //     })
     //     .catch(null);
-
-
-
-
-
-
 };
-const cleanUserForm = (id) =>{
-    const form1 = document.getElementById(id)
-    form1.reset()
-
-    userData.password = ''
-    userData.email =''
-
-}
+//  .
 export const getUserForm = () => {
     const form = document.createElement('form');
 
