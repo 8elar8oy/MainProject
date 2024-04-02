@@ -16,7 +16,7 @@ export const getLayout = (/*userId,pathName*/) => {
         if(userId){
             //window.location.pathname = '/profile'
              div.innerHTML = ''; 
-            div.append(profilePage(userId)); // Передача userId на страницу профиля
+             profilePage(userId); // Передача userId на страницу профиля
         }
         else{
             window.location.pathname = '/';
