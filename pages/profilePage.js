@@ -5,7 +5,7 @@ import { profile } from '../pages/profile';
 
 
 export const profilePage = (id) => {
-    const div = document.createElement('div');
+    const div = document.querySelector('#app');
     
     getUsers(`users/${id}`).then(
         user =>{ div.append(profile( user.data))

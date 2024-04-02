@@ -41,8 +41,9 @@ export const profile = (user) =>{
         publications.data.map(publication => publicationsList.append(publicationCard(publication)))
     )
     const footer = document.createElement('footer')
+    profileHat.append(profileAva)
     profileInfo.append(profileHat)
-    profileInfo.append(profileAva)
+
     profileInfo.append(email)
     profileInfo.append(login)
     profileInfo.append(name)
@@ -51,10 +52,10 @@ export const profile = (user) =>{
 
 
     main.append(profileInfo)
-    main.append(friendsList);
+    //main.append(friendsList);
     main.append(publicationsList);
     profileDiv.append(main);
-    profileDiv.append(footer);
+    //profileDiv.append(footer);
 
     return profileDiv
 }

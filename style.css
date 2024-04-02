@@ -1,9 +1,14 @@
 html,body{
-  height: 100%;
+
   margin: 0;
   background-color: grey;
 }
 input:-webkit-autofill{
   box-shadow: 0 0 0 1000px #bdbdbd inset;
+}
+.app{
+  display: flex;
+  justify-content: center;
+
 }
 

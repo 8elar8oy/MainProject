@@ -1,5 +1,5 @@
 import { button } from './button';
-import styles from '../feautures/loginForm/loginForm.module.css'
+import styles from '../pages/profile.module.css'
 
 const navList = [
     {
