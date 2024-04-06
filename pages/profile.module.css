@@ -4,16 +4,18 @@
    justify-content: center;
     height: 125px;
     padding:0 50px 0 50px ;
+    
     background-color: #eee2dc;
 }
 
 .profileDiv{
 
-
+   
     width: 100%;
+    min-width: 500px;
     max-width: 750px;
     margin: 0;
-    /*width: 100vw;*/
+    
 }
 .profileInfo{
     display: flex;
@@ -21,6 +23,7 @@
     align-items: center;
     background-color: #eee2dc;
     width: 100%;
+    min-width: 500px;
     height: 500px;
     position: relative;
     border-radius: 10px;
@@ -81,11 +84,9 @@
     /*border: black 10px solid;*/
 }
 .btn:hover{
-    background-color: rgb(11, 118, 0);
+    background-color: #134478;
 }
-.btn:focus{
-    background-color: #4e9f52;
-}
+
 .list{
     list-style-type: none;
     padding: 0;
