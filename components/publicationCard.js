@@ -1,34 +1,70 @@
+import { image } from './image';
 import styles from  './publicationCard.module.css'
+import { button } from './button';
+const actionsList = [
+    {
+        id: "deleteBtn", text: "Удалить", callBack: null 
+    },
+    {
+        id: "redactBtn", text: "Изменить", callBack: null 
+    }
+];
 
-
-export const publicationCard = publication => {
+const getActions = () => {
+    const list = document.createElement('div');
+    const actions = document.createElement('div')
+    const container = document.createElement('div')
+    actions.innerText = '...';
+    actionsList.forEach(element => {
+        container.append(
+            button(
+                {
+                    text: element.text,
+                    style: styles.btn,
+                    callBack: element.callBack
+                }
+            )
+        );
+    });
+    list.append(actions,container); 
+    list.classList.add(styles.list)
+    actions.classList.add(styles.actions)
+    container.classList.add(styles.actionsContainer)
+    return list;
+};
+export const publicationCard = (publication,user) => {
     const container = document.createElement('div');
     const head = document.createElement('div')
     const userInfo = document.createElement('div')
-    const ava = document.createElement('div');
-    const publicationImg = document.createElement('div');
+    const publicationImg = image(publication.image)
     const name = document.createElement('p');
-    const actions = document.createElement('div');
     const title = document.createElement('p');
-    const body = document.createElement('p');
-
-    const bottom = document.createElement('div');
-    const likeImg = document.createElement('div');
-    const likeAmount = document.createElement('div');
-    container.classList.add(styles.container)
-    title.classList.add(styles.title)
-
-
+    const body = document.createElement('div');
+   
+    
+    
+    const actions = getActions()
+    const ava = image(user.image[0])
+    
+   
     container.setAttribute('id', publication.id)
-
-
+    name.innerText = `${user.name} ${user.surname}`;
     title.innerText = publication.title;
-    body.innerText = publication.body;
+    
     userInfo.append(ava,name)
     head.append(userInfo,actions);
     body.append(title,publicationImg)
-    bottom.append(likeImg,likeAmount);
 
     container.append(head,body);
+    
+    container.classList.add(styles.container)
+    title.classList.add(styles.title)
+    userInfo.classList.add(styles.userInfo)
+    head.classList.add(styles.head)
+    body.classList.add(styles.body)
+    ava.classList.add(styles.ava)
+    actions.classList.add(styles.actions)
+    publicationImg.classList.add(styles.publicationImg)
+    
     return container;
 };

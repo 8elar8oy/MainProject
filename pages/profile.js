@@ -7,48 +7,54 @@ import {getPublications} from "../api/getPublications";
 
 export const profile = (user) =>{
     const profileDiv = document.createElement('div')
-    profileDiv.classList.add(styles.profileDiv)
-    const headerNav = getNav()
     const header = document.createElement('header')
-    header.append(headerNav)
-    header.classList.add(styles.header)
-
     const main = document.createElement('main')
-    main.classList.add(styles.main)
-
     const profileInfo = document.createElement('div')
-    profileInfo.classList.add(styles.profileInfo)
-
+    const name = document.createElement('p');
+    const login = document.createElement('p');
+    const email = document.createElement('p');
+    const control = document.createElement('div');
+    const friendsList = document.createElement('aside')
+    const publicationsList = document.createElement('div')
+    const footer = document.createElement('footer')
+    
+    const headerNav = getNav()
     const profileHat = image(user.image[1])
     const profileAva = image(user.image[0])
-    const name = document.createElement('p');
+
     name.innerText = user.name;
-
-    const login = document.createElement('p');
     login.innerText = user.username;
-
-    const email = document.createElement('p');
     email.innerText = user.email;
+
+    header.classList.add(styles.header)
+    profileDiv.classList.add(styles.profileDiv)
+    main.classList.add(styles.main)
+    profileInfo.classList.add(styles.profileInfo)
+
+    
+    
+    
     profileAva.classList.add(styles.profileAva)
     profileHat.classList.add(styles.profileHat)
 
 
 
-    const friendsList = document.createElement('aside')
-    const publicationsList = document.createElement('div')
+    
     publicationsList.classList.add(styles.publicationList)
     getPublications('publications').then(publications=>
-        publications.data.map(publication => publicationsList.append(publicationCard(publication)))
+        publications.data.map(publication => publicationsList.append(publicationCard(publication,user)))
     )
-    const footer = document.createElement('footer')
-    profileHat.append(profileAva)
-    profileInfo.append(profileHat)
+    header.append(headerNav)
+    profileDiv.append(header);
 
+    profileHat.append(profileAva)
+    
+    profileInfo.append(profileHat)
     profileInfo.append(email)
     profileInfo.append(login)
     profileInfo.append(name)
 
-    profileDiv.append(header);
+   
 
 
     main.append(profileInfo)
