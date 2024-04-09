@@ -1,4 +1,5 @@
 export const getInput = ({type, inputTitle, callBack,id,style})=>{
+
     const input = document.createElement('input');
     const label = document.createElement('label');
     input.setAttribute('type',type);
