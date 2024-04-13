@@ -2,8 +2,7 @@ import {getInput} from "../../components/input";
 import {button} from "../../components/button";
 import {getUsers} from "../../api/getUsers";
 import styles from "./loginForm.module.css"
-import { getLayout } from "../../layout/layout";
-
+import { getLayout } from "../layout/layout";
 
 export let userData = {
     id: '',
@@ -17,20 +16,15 @@ const changePage =(userId)=>{
     window.history.pushState({ path: '/profile' }, '', '/profile');
     getLayout();
 }
-
 const checkUser = (data,loginData) =>{
-
     return data.find(user =>user.email === loginData.email && user.password === loginData.password)
 }
-
 const getPassword = password => {
     userData.password = password;
 };
-
 const getEmail = email => {
     userData.email = email;
 };
-
 const getUserData = () => {
     getUsers('users').then(
         users => {console.log(users.data,userData); const info = checkUser(users.data,userData); return info}
@@ -43,7 +37,6 @@ const getUserData = () => {
                 console.log(userData.id)
                 alert('Авторизация успешна')
                 changePage(userData.id)
-                //cleanUserForm(getUserForm().id)
             }
             else{
                 alert('неверный пароль')
@@ -51,9 +44,7 @@ const getUserData = () => {
         }
 
     )
-        
         return
-
     if (!userData.name||!userData.email||!userData.username){
         return
     }
@@ -66,7 +57,7 @@ const getUserData = () => {
     //     .catch(null);
 };
 //  .
-export const getUserForm = () => {
+export const getLoginForm = () => {
     const form = document.createElement('form');
 
     form.setAttribute('id','userId')

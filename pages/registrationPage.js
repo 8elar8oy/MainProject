@@ -1,4 +1,4 @@
-import {registrationWindow} from "../components/registrationWindow";
+import {registrationWindow} from "../feautures/registrationWindow/registrationWindow";
 import styles from './registrationPage.module.css'
 export const registrationPage = () =>{
     const div = document.createElement('div');
