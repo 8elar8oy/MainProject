@@ -1,6 +1,5 @@
 import './style.css'
-import {registrationPage} from "./pages/registrationPage";
-import{getLayout} from "./layout/layout";
+import { getLayout } from './feautures/layout/layout'
 
 const app = document.querySelector('#app')
 app.classList.add('app')

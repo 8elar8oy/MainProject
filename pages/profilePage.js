@@ -1,6 +1,6 @@
 import { getUsers } from '../api/getUsers';
 import {getPublications} from "../api/getPublications";
-import { profile } from '../pages/profile';
+import { profile } from '../feautures/profile/profile';
 
 
 

@@ -1,5 +1,5 @@
 import { button } from './button';
-import styles from '../pages/profile.module.css'
+import styles from './nav.module.css'
 
 const navList = [
     {
@@ -14,7 +14,7 @@ const navList = [
 
 export const getNav = () => {
     const ul = document.createElement('ul');
-    ul.classList.add(styles.list)
+    ul.classList.add(styles.navList)
     navList.forEach(navItem => {
         const li = document.createElement('li');
         li.append(button({text: navItem.name,style: styles.btn,callBack: () => window.location.pathname = navItem.path}));
