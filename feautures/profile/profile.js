@@ -1,5 +1,5 @@
 import styles from './profile.module.css'
-import { getCreatePublicationDiv } from '../createPublication/createPublication';
+import { getCreatePublicationDiv } from '../createPublicationContainer/createPublication';
 import { getInfo } from '../profileInfo/getInfo';
 import { getHeader } from '../header/header';
 import { getMain } from '../main/main/mainDiv';

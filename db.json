@@ -25,39 +25,62 @@
         "https://img.goodfon.ru/wallpaper/big/2/f3/paren-tolstovka-kapyushon.jpg",
         "./public/profileHat.png"
       ]
+    },
+    {
+      "id": "3",
+      "name": null,
+      "surname": null,
+      "username": null,
+      "phone": null,
+      "image": []
+    },
+    {
+      "id": "4",
+      "name": null,
+      "surname": null,
+      "username": null,
+      "phone": null,
+      "image": []
+    },
+    {
+      "id": "5",
+      "name": null,
+      "surname": null,
+      "username": null,
+      "phone": null,
+      "image": []
     }
   ],
   "publications": [
     {
       "userId": 1,
-      "id": 1,
+      "id": "1",
       "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
       "image": "https://i.pinimg.com/564x/c6/92/d3/c692d3628635f7b25c23cf25a088f8a1.jpg"
     },
     {
       "userId": 1,
-      "id": 2,
+      "id": "2",
       "title": "qui est esse",
       "image": "https://i.pinimg.com/236x/a0/88/ac/a088ac693eb4201bde00ef469ce9546f.jpg"
     },
     {
       "userId": 1,
-      "id": 3,
+      "id": "3",
       "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
       "image": "https://i.pinimg.com/564x/c6/92/d3/c692d3628635f7b25c23cf25a088f8a1.jpg"
     },
     {
       "userId": 1,
-      "id": 4,
+      "id": "4",
       "title": "eum et est occaecati",
       "image": "https://i.pinimg.com/564x/c6/92/d3/c692d3628635f7b25c23cf25a088f8a1.jpg"
     },
     {
       "userId": 1,
-      "id": 5,
+      "id": "5",
       "title": "nesciunt quas odio",
       "image": "https://i.pinimg.com/564x/c6/92/d3/c692d3628635f7b25c23cf25a088f8a1.jpg"
     }
-  
   ]
 }
