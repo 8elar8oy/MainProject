@@ -40,15 +40,16 @@ export const publicationCard = (publication,user) => {
     const name = document.createElement('p');
     const title = document.createElement('p');
     const body = document.createElement('div');
-   
-    
+    const fullName = user.name && user.surname ? `${user.name} ${user.surname}` : `Пользователь ${user.id}`;
+    const ava = user.image[0] ? image(user.image[0]) : image("./images/noAva.png");
     
     const actions = getActions()
-    const ava = image(user.image[0])
+   
     
    
     container.setAttribute('id', publication.id)
-    name.innerText = `${user.name} ${user.surname}`;
+    
+    name.innerText = fullName;
     title.innerText = publication.title;
     
     userInfo.append(ava,name)

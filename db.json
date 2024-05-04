@@ -25,30 +25,6 @@
         "https://img.goodfon.ru/wallpaper/big/2/f3/paren-tolstovka-kapyushon.jpg",
         "./public/profileHat.png"
       ]
-    },
-    {
-      "id": "3",
-      "name": null,
-      "surname": null,
-      "username": null,
-      "phone": null,
-      "image": []
-    },
-    {
-      "id": "4",
-      "name": null,
-      "surname": null,
-      "username": null,
-      "phone": null,
-      "image": []
-    },
-    {
-      "id": "5",
-      "name": null,
-      "surname": null,
-      "username": null,
-      "phone": null,
-      "image": []
     }
   ],
   "publications": [
@@ -81,6 +57,18 @@
       "id": "5",
       "title": "nesciunt quas odio",
       "image": "https://i.pinimg.com/564x/c6/92/d3/c692d3628635f7b25c23cf25a088f8a1.jpg"
+    },
+    {
+      "id": "51e0"
+    },
+    {
+      "id": "98a7"
+    },
+    {
+      "id": "d44a"
+    },
+    {
+      "id": "4fce"
     }
   ]
 }

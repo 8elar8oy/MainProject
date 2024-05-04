@@ -53,7 +53,7 @@ const getUserData = () => {
                 alert('Авторизация успешна')
                 changePage(userData.id)
             }
-            else if(info == null){
+            else if(!userData.password || !userData.email){
                 alert('Не оставляйте поля пустыми')
             }
             else{
@@ -79,7 +79,7 @@ const createNewUser = () =>{
             if(result.info ){
                 alert('Пользователь уже существует')
             }
-            else if(result.info == null){
+            else if(!userData.password || !userData.email){
                 alert('Не оставляйте поля пустыми')
             }
             else{
