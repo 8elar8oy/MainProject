@@ -1,19 +1,28 @@
 .container{
     display: flex;
-    flex-direction: column ;
+    flex-direction: column ; 
     width: 100%;
+    max-width: 750px;
     background-color: #eee2dc;
     border-radius: 15px;
     align-items: center;
     justify-content: space-between;
-
+    
 }
 .title{
+    border: none;
+    background-color: transparent;
+    overflow-wrap: anywhere;
+    display: block;
     color: #123c69;
     text-align: center;
     font-family:fantasy, Impact;
     font-size: 20px;
+    background:none;
+    outline:none;
+    
 }
+
 .userInfo{
     display: flex;
     width: 100%;

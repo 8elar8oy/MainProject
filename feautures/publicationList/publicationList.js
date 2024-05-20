@@ -4,8 +4,13 @@
  export const getPublicationList = (user) =>{
     const publicationsList = document.createElement('div')
     publicationsList.classList.add(styles.publicationList)
-    getPublications('publications').then(publications=>
-      publications.data.map(publication => publicationsList.append(publicationCard(publication,user)))
+    getPublications(`publications`).then(publications=>{
+       const filteredPublications = publications.data.filter(publication => publication.userId === user.id)
+       console.log(publications.data)
+       console.log(filteredPublications)
+       filteredPublications.reverse().map(publication => publicationsList.append(publicationCard(publication,user)))
+    }
+      
     )
     return publicationsList
  }
