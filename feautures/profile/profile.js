@@ -1,5 +1,5 @@
 import styles from './profile.module.css'
-import { getCreatePublicationDiv } from '../createPublication/createPublication';
+import { getCreatePublicationDiv } from '../publicationForm/createPublicationDiv';
 import { getInfo } from '../profileInfo/getInfo';
 import { getHeader } from '../header/header';
 import { getMain } from '../main/main/mainDiv';
@@ -10,14 +10,12 @@ export const profile = (user) =>{
     const header = getHeader()
     const profileInfo = getInfo(user)
     const publicationsList = getPublicationList(user)
-    const createPublication = getCreatePublicationDiv()
-    // const friendsList = document.createElement('aside')
-    // const footer = document.createElement('footer')
+    const createPublication = getCreatePublicationDiv(user)
     const main = getMain(profileInfo,createPublication,publicationsList)
     profileDiv.classList.add(styles.profileDiv)
     profileDiv.append(header)
     profileDiv.append(main);
-    //profileDiv.append(footer);
+   
 
     return profileDiv
 }
