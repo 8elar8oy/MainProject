@@ -72,13 +72,11 @@
     border: none;
     cursor: pointer;
 }
-/* Стили для основного контейнера */
 .list {
         
     position: relative;
     display: inline-block;
 }
-/* Стили для контейнера выпадающего списка */
 .actionsContainer {
     display: none;
     position: absolute;
