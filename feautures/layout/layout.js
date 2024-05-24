@@ -1,5 +1,5 @@
 
-import { userData } from '../loginForm/loginForm';
+
 import {registrationPage} from '../../pages/registrationPage'
 import { profilePage } from "../../pages/profilePage";
 export const getLayout = () => {

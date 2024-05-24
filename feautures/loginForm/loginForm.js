@@ -87,6 +87,7 @@ const createNewUser = () =>{
                 console.log(userData)
                 createUsers('users', userData)
                 .then(data =>{
+                    alert('Регистрация успешна')
                     changePage(userData.id)
                 }) 
             }

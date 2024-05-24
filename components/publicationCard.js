@@ -5,40 +5,26 @@ import { publicationData } from '../feautures/publicationForm/createPublicationD
 import { getEditPublicationForm } from '../feautures/editForm/editForm';
 import { getCreatePublicationDiv } from '../feautures/publicationForm/createPublicationDiv';
 import {editPublicationWindow} from "./editWindow";
-const changePublication = (publication) =>{
-    // const title = document.getElementById('publicationText')
-    // title.value = publication.title;
-    // title.focus();
-    Object.assign(publicationData, publication);
-    //publicationData = publication
-    // publicationData.getId(publication.id)
-    console.log(publicationData)
+import { removeElement} from '../api/removeElement';
+const removePublicationCard = (publication) =>{
+    removeElement('publications', publication.id).then(res => {
+        const removeItem = document.getElementById(res.data.id)
+        const publicationList = document.getElementById('publicationList')
+        publicationList.removeChild(removeItem)
+    })
 }
-const actionsList = [
-    {
-        id: "deleteBtn", text: "Удалить", callBack: null 
-    },
-    {
-        id: "redactBtn", text: "Изменить", callBack: (publication) =>  editPublicationWindow(publication)
-    }
-];
 
-const getActions = (publication) => {
+
+const getActions = (publication,user) => {
     const list = document.createElement('div');
     const actions = document.createElement('div')
     const container = document.createElement('div')
     actions.innerText = '...';
-    actionsList.forEach(element => {
-        container.append(
-            button(
-                {
-                    text: element.text,
-                    style: styles.btn,
-                    callBack: () => element.callBack(publication)
-                }
-            )
-        );
-    });
+    container.append(
+        button({text: 'Изменить',style: styles.btn,callBack: () => editPublicationWindow(publication,user)}),
+        button({text: 'Удалить',style: styles.btn,callBack: () => removePublicationCard(publication)})
+    );
+
     list.append(actions,container); 
     list.classList.add(styles.list)
     actions.classList.add(styles.actions)
@@ -46,6 +32,7 @@ const getActions = (publication) => {
     return list;
 };
 export const publicationCard = (publication,user) => {
+    console.log(publication,'юзер',user)
     const container = document.createElement('div');
     
     const head = document.createElement('div')
@@ -56,7 +43,7 @@ export const publicationCard = (publication,user) => {
     const body = document.createElement('div');
     const fullName = user.name && user.surname ? `${user.name} ${user.surname}` : `Пользователь ${user.id}`;
     const ava = user.image[0] ? image(user.image[0]) : image("./images/noAva.png");
-    const actions = getActions(publication)
+    const actions = getActions(publication,user)
     container.setAttribute('id', publication.id)
     name.innerText = fullName;
     title.innerText = publication.title;

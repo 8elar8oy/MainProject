@@ -4,8 +4,10 @@ import {image} from "../../components/image";
 
 export const registrationWindow = () =>{
     const reg = document.createElement('div')
+    const logo = image('../../images/logo.png')
+    logo.classList.add(styles.logo)
     reg.classList.add(styles.container)
-    reg.append(image('/logo.png'))
+    reg.append(logo)
     reg.append(getLoginForm())
     return reg;
 }
