@@ -7,7 +7,7 @@ import { getMain } from '../main/main/mainDiv';
 import { getPublicationList } from '../publicationList/publicationList';
 export const profile = (user) =>{
     const profileDiv = document.createElement('div')
-    const header = getHeader()
+    const header = getHeader(user)
     const profileInfo = getInfo(user)
     const publicationsList = getPublicationList(user)
     const createPublication = getCreatePublicationDiv(user)

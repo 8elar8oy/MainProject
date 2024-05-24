@@ -4,6 +4,7 @@
  export const getPublicationList = (user) =>{
     const publicationsList = document.createElement('div')
     publicationsList.classList.add(styles.publicationList)
+    publicationsList.setAttribute('id','publicationList')
     getPublications(`publications`).then(publications=>{
        const filteredPublications = publications.data.filter(publication => publication.userId === user.id)
        console.log(publications.data)

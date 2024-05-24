@@ -6,6 +6,7 @@ import { getPublications } from '../../api/getPublications';
 import { createPublication } from '../../api/createPublication';
 import { publicationCard } from '../../components/publicationCard';
 import { getPublicationList } from '../publicationList/publicationList';
+import { userData } from '../loginForm/loginForm';
 export const publicationData = {
     userId: null,
     id: '',
@@ -16,6 +17,8 @@ export const publicationData = {
     }
 };
 export const getCreatePublicationDiv = (user) => {
+    console.log(userData)
+    // userData = user.data
     const createPublicationDiv = document.createElement('div');
     
     createPublicationDiv.classList.add(styles.create);
@@ -42,11 +45,17 @@ const createNewPublication = async (user) => {
         return;
     }
 
-    const publicationsList = getPublicationList(user);
+    const publicationsList = document.getElementById('publicationList')
 
     try {
         const publications = await getPublications('publications');
         const id = `${publications.data.length + 1}`;
+        publications.forEach(publication=>{
+            while(publication.id === id){
+                id++;
+            }
+        })
+        
 
         publicationData.userId = user.id;
         publicationData.id = id;
@@ -54,13 +63,31 @@ const createNewPublication = async (user) => {
         publicationData.image = publicationPhoto.name;
 
         await createPublication('publications', publicationData);
+        
+        const updatedPublications = await getPublications('publications');
+    
+        displayPublications(updatedPublications.data, user);
+        
         const publication = publicationCard(publicationData, user);
         publicationsList.append(publication);
+       
+        document.getElementById('publicationText').value = '';
+        document.getElementById('publicationPhoto').value = '';
     } catch (error) {
         console.error('Ошибка при создании публикации:', error);
         alert('Произошла ошибка при создании публикации');
     }
 };
 
+export const displayPublications = (publications, user) => {
+    console.log(publications)
+    const publicationsList = document.getElementById('publicationList');
+    publicationsList.innerHTML = '';
+    console.log(publications)
+    publications.reverse().forEach(publication => {
+        console.log(publications,user)
+        publicationsList.appendChild(publicationCard(publication, user));
+    });
+};
 
    
