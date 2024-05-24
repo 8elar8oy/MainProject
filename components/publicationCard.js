@@ -2,8 +2,9 @@ import { image } from './image';
 import styles from  './publicationCard.module.css'
 import { button } from './button';
 import { publicationData } from '../feautures/publicationForm/createPublicationDiv';
-import { createEditForm } from '../feautures/editForm/editForm';
+import { getEditPublicationForm } from '../feautures/editForm/editForm';
 import { getCreatePublicationDiv } from '../feautures/publicationForm/createPublicationDiv';
+import {editPublicationWindow} from "./editWindow";
 const changePublication = (publication) =>{
     // const title = document.getElementById('publicationText')
     // title.value = publication.title;
@@ -18,7 +19,7 @@ const actionsList = [
         id: "deleteBtn", text: "Удалить", callBack: null 
     },
     {
-        id: "redactBtn", text: "Изменить", callBack: (publication) => /*changePublication(publication) */ createEditForm(publication)
+        id: "redactBtn", text: "Изменить", callBack: (publication) =>  editPublicationWindow(publication)
     }
 ];
 
