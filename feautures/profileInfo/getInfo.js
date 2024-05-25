@@ -1,22 +1,24 @@
 import styles from './getInfo.module.css'
 import { image } from '../../components/image';
 import { button } from '../../components/button';
-
+import { getEditUserForm } from '../editUserForm/editUserForm';
+import { editPublicationWindow } from '../../components/editWindow';
 export const getInfo = (user)=> {
-    console.log(user)
+   
     const profileInfo = document.createElement('div');
+    profileInfo.setAttribute('id','profileInfo')
     const fullName = user.name && user.surname ? `${user.name} ${user.surname}` : `Пользователь ${user.id}`;
     const userName = document.createElement('p');
     userName.innerText = fullName;
-    const profileAva = user.image[0] ? image(user.image[0]) : image("../../images/noAva.png");
-    const profileHat = user.image[1] ? image(user.image[1]) : document.createElement('div');
+    const profileAva = user.ava ? image(user.ava) : image("../../images/noAva.png");
+    const profileHat = user.hat ? image(user.hat) : document.createElement('div');
    
     profileAva.classList.add(styles.profileAva);
     profileHat.classList.add(styles.profileHat);
     const changeInfoBtn = button({
         text: 'Изменить информацию',
         style: styles.btn,
-        callBack: null
+        callBack: () => editPublicationWindow(getEditUserForm(user) ) 
     });
 
     profileHat.append(profileAva);

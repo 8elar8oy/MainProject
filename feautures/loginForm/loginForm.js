@@ -4,14 +4,15 @@ import {getUsers} from "../../api/getUsers";
 import styles from "./loginForm.module.css"
 import { getLayout } from "../layout/layout";
 import {createUsers} from "../../api/createUser";
-
+import { checkEmail } from "../checkEmail/checkEmail";
 export let userData = {
     id: '',
     name: null,
     surname: null,
     username: null,
     phone: null,
-    image: [],
+    hat: null,
+    ava: null,
     getId(id) {
         this.id = id
     }
@@ -82,14 +83,21 @@ const createNewUser = () =>{
             else if(!userData.password || !userData.email){
                 alert('Не оставляйте поля пустыми')
             }
+            
             else{
-                userData.getId(result.id)
-                console.log(userData)
-                createUsers('users', userData)
-                .then(data =>{
-                    alert('Регистрация успешна')
-                    changePage(userData.id)
-                }) 
+                if(!checkEmail(userData.email)){
+                    alert('Почта введена неверно')
+                }
+                else{
+                    userData.getId(result.id)
+                    console.log(userData)
+                    createUsers('users', userData)
+                    .then(data =>{
+                        alert('Регистрация успешна')
+                        changePage(userData.id)
+                    }) 
+                }
+                
             }
         }
     )

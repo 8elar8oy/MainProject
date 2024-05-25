@@ -10,7 +10,7 @@ export const getLayout = () => {
     }
     if (pathname === '/profile') {
         const userId = localStorage.getItem('userId');
-        console.log('usid',userId)
+        
         if(userId){    
              div.innerHTML = ''; 
              profilePage(userId); 

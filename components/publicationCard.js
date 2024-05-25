@@ -2,9 +2,10 @@ import { image } from './image';
 import styles from  './publicationCard.module.css'
 import { button } from './button';
 import { publicationData } from '../feautures/publicationForm/createPublicationDiv';
-import { getEditPublicationForm } from '../feautures/editForm/editForm';
+import { getEditPublicationForm } from '../feautures/editPublicationForm/editPublicationForm';
 import { getCreatePublicationDiv } from '../feautures/publicationForm/createPublicationDiv';
 import {editPublicationWindow} from "./editWindow";
+
 import { removeElement} from '../api/removeElement';
 const removePublicationCard = (publication) =>{
     removeElement('publications', publication.id).then(res => {
@@ -21,7 +22,7 @@ const getActions = (publication,user) => {
     const container = document.createElement('div')
     actions.innerText = '...';
     container.append(
-        button({text: 'Изменить',style: styles.btn,callBack: () => editPublicationWindow(publication,user)}),
+        button({text: 'Изменить',style: styles.btn,callBack: () => editPublicationWindow(getEditPublicationForm(publication,user))}),
         button({text: 'Удалить',style: styles.btn,callBack: () => removePublicationCard(publication)})
     );
 
@@ -32,7 +33,7 @@ const getActions = (publication,user) => {
     return list;
 };
 export const publicationCard = (publication,user) => {
-    console.log(publication,'юзер',user)
+   
     const container = document.createElement('div');
     
     const head = document.createElement('div')
@@ -42,7 +43,7 @@ export const publicationCard = (publication,user) => {
     const title = document.createElement('p');
     const body = document.createElement('div');
     const fullName = user.name && user.surname ? `${user.name} ${user.surname}` : `Пользователь ${user.id}`;
-    const ava = user.image[0] ? image(user.image[0]) : image("./images/noAva.png");
+    const ava = user.ava ? image(user.ava) : image("./images/noAva.png");
     const actions = getActions(publication,user)
     container.setAttribute('id', publication.id)
     name.innerText = fullName;
