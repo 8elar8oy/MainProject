@@ -17,7 +17,7 @@ export const publicationData = {
     }
 };
 export const getCreatePublicationDiv = (user) => {
-    console.log(userData)
+
     // userData = user.data
     const createPublicationDiv = document.createElement('div');
     
@@ -28,6 +28,19 @@ export const getCreatePublicationDiv = (user) => {
     
     const publicationText = getInput({ type: 'text', inputTitle: 'Введите текст', id: 'publicationText', style: styles.input });
     const publicationPhoto = getInputFile({ id: 'publicationPhoto' });
+    publicationPhoto.addEventListener('change', function(event) {
+        console.log('вот так поворот')
+        const file = event.target.files[0];
+        console.log(file)
+        const reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onload = function(event) {
+                const base64String = event.target.result;
+                publicationData.image = base64String; 
+                console.log(publicationData);
+        };
+        
+    });
     const submitButton = button({ text: "Опубликовать", style: styles.btn, callBack: () => createNewPublication(user) });
 
     publicationForm.append(publicationPhoto, publicationText, submitButton);
@@ -38,7 +51,7 @@ export const getCreatePublicationDiv = (user) => {
 
 const createNewPublication = async (user) => {
     const publicationText = document.getElementById('publicationText').value;
-    const publicationPhoto = document.getElementById('publicationPhoto').value;
+    
 
     if (!publicationText && !publicationPhoto) {
         alert('Не оставляйте поля пустыми');
@@ -50,26 +63,20 @@ const createNewPublication = async (user) => {
     try {
         const publications = await getPublications('publications');
         const id = `${publications.data.length + 1}`;
-        publications.forEach(publication=>{
-            while(publication.id === id){
-                id++;
-            }
-        })
+        
         
 
         publicationData.userId = user.id;
         publicationData.id = id;
         publicationData.title = publicationText;
-        publicationData.image = publicationPhoto.name;
+        
 
         await createPublication('publications', publicationData);
         
-        const updatedPublications = await getPublications('publications');
-    
-        displayPublications(updatedPublications.data, user);
-        
-        const publication = publicationCard(publicationData, user);
-        publicationsList.append(publication);
+        const updatedPublications = await getPublications(`publications`);
+        const filteredPublications = updatedPublications.data.filter(publication => publication.userId === user.id)
+        console.log(filteredPublications)
+        displayPublications(filteredPublications, user);
        
         document.getElementById('publicationText').value = '';
         document.getElementById('publicationPhoto').value = '';
@@ -80,12 +87,11 @@ const createNewPublication = async (user) => {
 };
 
 export const displayPublications = (publications, user) => {
-    console.log(publications)
+    
     const publicationsList = document.getElementById('publicationList');
     publicationsList.innerHTML = '';
-    console.log(publications)
     publications.reverse().forEach(publication => {
-        console.log(publications,user)
+        console.log(publications)
         publicationsList.appendChild(publicationCard(publication, user));
     });
 };

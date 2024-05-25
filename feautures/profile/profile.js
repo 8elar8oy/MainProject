@@ -9,6 +9,7 @@ export const profile = (user) =>{
     const profileDiv = document.createElement('div')
     const header = getHeader(user)
     const profileInfo = getInfo(user)
+    
     const publicationsList = getPublicationList(user)
     const createPublication = getCreatePublicationDiv(user)
     const main = getMain(profileInfo,createPublication,publicationsList)

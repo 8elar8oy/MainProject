@@ -1,15 +1,43 @@
 import { removeElement } from '../api/removeElement';
 import { button } from './button';
 import styles from './nav.module.css';
-import { getLayout } from '../feautures/layout/layout';
+import { getUsers } from '../api/getUsers';
+import { getPublications } from '../api/getPublications';
 
 const removeUser = (user) => {
-    removeElement('users', user.id).then(res => {
-        const removeItem = document.getElementById(res.data.id);
-        localStorage.removeItem('userId');
-        location.reload();
-    });
+    getPublications('publications')
+        .then(publications => {
+            const filteredPublications = publications.data.filter(publication => publication.userId === user.id);
+            console.log(filteredPublications);
+            return filteredPublications;
+        })
+        .then(publications => {
+            const publicationIds = publications.map(publication => publication.id);
+            console.log(publicationIds)
+            return removeElement('users', user.id)
+                .then(res => {
+                    localStorage.removeItem('userId');
+                    location.reload();
+                    console.log(publicationIds)
+                    return publicationIds; 
+                });
+        })
+        .then(publicationIds => {
+            console.log(publicationIds)
+            const deletedPromises = publicationIds.map(publicationId =>{
+                console.log(publicationId)
+                return removeElement('publications', publicationId);
+            })
+            return Promise.all(deletedPromises)
+        })
+        .then(() => {
+            alert('Пользователь и его публикации были удалены.');
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
 };
+
 
 const navList = [
     {

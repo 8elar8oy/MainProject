@@ -9,8 +9,6 @@ export const profilePage = (id) => {
     
     getUsers(`users/${id}`).then(
         user =>{
-            console.log(userData)
-            console.log(user)
             div.append(profile(user.data))
         }
     )
